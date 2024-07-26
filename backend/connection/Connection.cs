@@ -133,6 +133,7 @@ namespace _.Connection
       });
 
       modelBuilder.Seed();
+      base.OnModelCreating(modelBuilder);
     }
   }
 }
