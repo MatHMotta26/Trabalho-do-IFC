@@ -17,10 +17,10 @@ public class User
   public string[]? CategoriesPreferences { get; set; }
 
   [GraphField]
-  public required string Telephone { get; set; }
+  public string? Telephone { get; set; }
 
   [GraphField]
-  public required DateOnly Birthday { get; set; }
+  public DateOnly Birthday { get; set; }
 
   [GraphField]
   public Wishlist? Wishlist { get; set; }

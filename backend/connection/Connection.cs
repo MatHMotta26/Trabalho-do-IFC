@@ -84,8 +84,8 @@ namespace _.Connection
                       c => c == null ? 0 : c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
                       c => c.ToArray()));
         entity.Property(e => e.Description).HasMaxLength(300);
-        entity.Property(e => e.Telephone).IsRequired().HasMaxLength(15);
-        entity.Property(e => e.Birthday).IsRequired().HasColumnType("DATE").HasConversion(
+        entity.Property(e => e.Telephone).HasMaxLength(15);
+        entity.Property(e => e.Birthday).HasColumnType("DATE").HasConversion(
             v => v.ToDateTime(TimeOnly.MinValue),
             v => DateOnly.FromDateTime(v));
         entity.HasOne(e => e.Wishlist).WithOne(e => e.User).HasForeignKey<Wishlist>(e => e.UserId);
@@ -100,8 +100,7 @@ namespace _.Connection
         entity.Property(e => e.Name).IsRequired().HasMaxLength(150);
         entity.Property(e => e.Image).IsRequired().HasColumnType("LONGBLOB");
         entity.Property(e => e.Email).IsRequired().HasMaxLength(100);
-        entity.Property(e => e.Password).HasMaxLength(100);
-        entity.Property(e => e.Provider).IsRequired().HasMaxLength(20);
+        entity.Property(e => e.Password).IsRequired().HasMaxLength(100);
         entity.HasOne(e => e.User).WithOne(e => e.Account).HasForeignKey<Account>(e => e.UserId);
       });
 

@@ -7,8 +7,8 @@ namespace _.GraphQL.Models;
 [GraphType]
 public class Account
 {
-  [Key]
-  public required string Id { get; set; }
+  [Key, Column(TypeName = "BINARY(16)")]
+  public required byte[] Id { get; set; }
 
   [GraphField]
   public required string Name { get; set; }
@@ -20,10 +20,7 @@ public class Account
   public required string Email { get; set; }
 
   [GraphField]
-  public string? Password { get; set; }
-
-  [GraphField]
-  public required string Provider { get; set; }
+  public required string Password { get; set; }
 
   [ForeignKey("User"), Column(TypeName = "BINARY(16)")]
   public byte[]? UserId { get; set; }
